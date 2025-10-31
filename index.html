@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>MICCAI 2024 Challenge on Long-tailed, multi-label, and zero-shot classification on chest X-rays</title>
+<title>ISBI 2026 Challenge on Long-tailed, multi-label, and zero-shot classification on chest X-rays</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
@@ -32,9 +32,8 @@
 <br>
 
 <div class="containersmall">
-  <center><b>Click here to participate in Task 1: <a target="_blank" rel="noopener noreferrer" href="https://codalab.lisn.upsaclay.fr/competitions/18601">https://codalab.lisn.upsaclay.fr/competitions/18601</a></b></center>
-  <center><b>Click here to participate in Task 2: <a target="_blank" rel="noopener noreferrer" href="https://codalab.lisn.upsaclay.fr/competitions/18603">https://codalab.lisn.upsaclay.fr/competitions/18603</a></b></center>
-  <center><b>Click here to participate in Task 3: <a target="_blank" rel="noopener noreferrer" href="https://codalab.lisn.upsaclay.fr/competitions/18604">https://codalab.lisn.upsaclay.fr/competitions/18604</a></b></center>
+  <center><b>Click here to participate in Task 1: <a target="_blank" rel="noopener noreferrer" href="">TBD</a></b></center>
+  <center><b>Click here to participate in Task 2: <a target="_blank" rel="noopener noreferrer" href="">TBD</a></b></center>
 </div>
 
 <br>
@@ -56,14 +55,14 @@
   <h2>Shared Task</h2>
     <div class="overview">
       <h3>Dataset</h3>
-      <p>In the first iteration of CXR-LT held in 2023, we expanded upon the MIMIC-CXR dataset by enlarging the set of target classes from 14 to 26, generating labels for 12 new rare disease findings by parsing radiology reports. For this year's version of CXR-LT, we extract labels for an additional 19 rare disease findings (for a total of 377,110 CXR images, each with 45 disease labels).</p>
+      <p>CXR-LT 2026 is the third edition of a successful challenge first hosted at ICCV 2023 and second hosted at MICCAI 2024. The task remains the same: to classify multiple disease labels from chest X-rays in the presence of a long-tailed label distribution.
+      </p>
 
       <h3>Task</h3>
       <p>Given a CXR, our challenge includes three tasks, to be held as independent tasks: 
         <ul>
-          <li>Task 1: long-tailed classification on a large, noisy test set;</li>
-          <li>Task 2: long-tailed classification on a small, manually annotated test set;</li>
-          <li>Task 3: zero-shot generalization to previously unseen disease findings. </li>
+          <li>Task 1: long-tailed classification on an annotated test set;</li>
+          <li>Task 2: zero-shot generalization to previously unseen disease findings. </li>
         </ul>
       For all tasks, participants will be provided with a large, automatically labeled training set of >250,000 CXR images with 40 binary disease labels. While last year's CXR-LT was a success, we hope that CXR-LT 2024 can provide even further meaningful methodological advances toward clinically realistic multi-label, long-tailed, and zero-shot disease classification on CXR.
       </p>
@@ -71,9 +70,9 @@
       <h3>Evaluation</h3>
       <p>For each task, models will be evaluated on the provided testing set using “macro-averaged” mean Average Precision (<strong>mAP</strong>). 
         <ul>
-          <li>Task 1 will be evaluated on a large, automatically labeled test set of >75,000 CXRs from these same 40 labels;</li>
-          <li>Task 2 will be evaluated on a "gold standard" subset of the test set, containing 409 CXRs from 26 of the 40 labels that were manually annotated;</li>
-          <li>Task 3 will be evaluated on the same large test set of images as task (1), but for 5 "held-out" disease findings that have not been encountered during training.</li>
+          <li>Task 1 will be evaluated on a "gold standard" subset of the test set, containing 409 CXRs from 26 of the 40 labels that were manually annotated;</li>
+          <li>Task 2 will be evaluated on a separate set of 5 disease labels (75,000 images from MIMIC-CXR) that are completely held out from training. We labeled 5 new clinical findings using an NLP-based text mining system (MedText).
+          </li>
         </ul>
         </p>
       </p>
@@ -109,11 +108,11 @@
 <div class="container">
   <h2>Important dates</h2>
     <div class="schedule">
-      <p class="subtitle"><span class="announce_date">May 01, 2024</span>&nbsp;&nbsp;&nbsp;&nbsp;Training data released and challenge (development phase) begins</p>
-      <p class="subtitle"><span class="announce_date">Aug 01, 2024</span>&nbsp;&nbsp;&nbsp;&nbsp;Test labels released and final evaluation (testing phase) begins</p>
-      <p class="subtitle"><span class="announce_date">Aug 04, 2024</span>&nbsp;&nbsp;&nbsp;&nbsp;Testing phase ends and competition is closed.</p>
-      <p class="subtitle"><span class="announce_date">Aug 15, 2024</span>&nbsp;&nbsp;&nbsp;&nbsp;Top-performing teams invited to present at MICCAI 2024</p>
-      <p class="subtitle"><span class="announce_date">Oct 10, 2024</span>&nbsp;&nbsp;&nbsp;&nbsp;MICCAI 2024 CXR-LT Challenge event</p>
+      <p class="subtitle"><span class="announce_date">Nov 17, 2025</span>&nbsp;&nbsp;&nbsp;&nbsp;Training data released and challenge (development phase) begins</p>
+      <p class="subtitle"><span class="announce_date">Dec 01, 2025</span>&nbsp;&nbsp;&nbsp;&nbsp;Test labels released and final evaluation (testing phase) begins</p>
+      <p class="subtitle"><span class="announce_date">Jan 27, 2026</span>&nbsp;&nbsp;&nbsp;&nbsp;Testing phase ends and competition is closed.</p>
+      <p class="subtitle"><span class="announce_date">Feb 10, 2026</span>&nbsp;&nbsp;&nbsp;&nbsp;Top-performing teams invited to present at MICCAI 2024</p>
+      <p class="subtitle"><span class="announce_date">Apr 10, 2026</span>&nbsp;&nbsp;&nbsp;&nbsp;ISBI 2026 CXR-LT Challenge event</p>
     </div>
 </div>
 
@@ -121,7 +120,8 @@
 
 <div class="container">
   <h2>Tentative Schedule</h2>
-    <div><a href="https://github.com/CXR-LT/CXR-LT-2024/tree/main/CXR-LT%202024%20Material">Slides</a></div>
+    <div>TBD</div>
+    <!-- <div><a href="https://github.com/CXR-LT/CXR-LT-2024/tree/main/CXR-LT%202024%20Material">Slides</a></div>
     <div class="schedule">
       <p class="subtitle"><span class="announce_date">1:30 PM</span>&nbsp;&nbsp;&nbsp;&nbsp;<b>Introduction to CXR-LT</b></p>
       <p class="subtitle"><span class="announce_date">1:40 PM</span>&nbsp;&nbsp;&nbsp;&nbsp;Team "zguo", Arizona State University, <a href="https://github.com/CXR-LT/CXR-LT-2024">Link</a></p>
@@ -134,19 +134,14 @@
       <p class="subtitle"><span class="announce_date">3:04 PM</span>&nbsp;&nbsp;&nbsp;&nbsp;Team "yangz16", Rensselaer Polytechnic Institute</p>
       <p class="subtitle"><span class="announce_date">3:16 PM</span>&nbsp;&nbsp;&nbsp;&nbsp;Team "ZhangRuichi", Xiamen University</p>
       <p class="subtitle"><span class="announce_date">3:28 PM</span>&nbsp;&nbsp;&nbsp;&nbsp;<b>Closing remarks</b></p>
-    </div>
+    </div> -->
 </div>
 
 <br>
 
 <div class="containersmall">
   <h2>Steering committee</h2>
-    <div class="instructor">
-    <a href="https://vivo.weill.cornell.edu/display/cwid-ges9006">
-      <div class="instructorphoto"><img src="figures/george_shih.jpg"></div>
-      <div>George Shih<br>Weill Cornell Medicine<br></div>
-    </a>
-  </div>
+
 
   <div class="instructor">
     <a href="https://www.ncbi.nlm.nih.gov/research/bionlp/Zhiyong-Lu">
@@ -161,77 +156,55 @@
       <div>Ronald M. Summers<br>NIH Clinical Center<br></div>
     </a>
   </div>
-
-      <div class="instructor">
-    <a href="https://www.hsph.harvard.edu/ecpe/faculty/leo-anthony-celi/">
-      <div class="instructorphoto"><img src="figures/Leo.png"></div>
-      <div>Leo Anthony Celi<br>MIT/Harvard<br></div>
-    </a>
-  </div>
-
-  <div class="instructor">
-    <a href="https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/radiology/faculty-staff/faculty/flanders.html">
-      <div class="instructorphoto"><img src="figures/adam_flanders.jpg"></div>
-      <div>Adam E. Flanders<br>Thomas Jefferson University<br></div>
-    </a>
-  </div>
-
-
 </div>
 
 <br>
 
 <div class="containersmall">
   <h2>Organizers</h2>
-  
+  <div class="instructor">
+    <a href="">
+      <div class="instructorphoto"><img src="figures/hexin_dong.png"></div>
+      <div>Hexin Dong<br>Weill Cornell Medicine<br></div>
+    </a>
+  </div>
+  <div class="instructor">
+    <a href="https://ianyilin.github.io/">
+      <div class="instructorphoto"><img src="figures/yi_lin.jpg"></div>
+      <div>Yi Lin<br>Weill Cornell Medicine<br></div>
+    </a>
+  </div>
   <div class="instructor">
     <a href="https://med.umn.edu/bio/mingquan-lin">
       <div class="instructorphoto"><img src="figures/MINGQUAN_LIN.jpg"></div>
       <div>Mingquan Lin<br>University of Minnesota<br></div>
     </a>
   </div>
-
-  <div class="instructor">
-    <a href="https://gholste.me/">
-      <div class="instructorphoto"><img src="figures/greg_holste.jpg"></div>
-      <div>Greg Holste<br>UT Austin<br></div>
-    </a>
-  </div>
-
-  <div class="instructor">
-    <a href="https://wsong1106.github.io/">
-      <div class="instructorphoto"><img src="figures/song_wang.jpg"></div>
-      <div>Song Wang<br>UT Austin<br></div>
-    </a>
-  </div>
-
-  <div class="instructor">
-    <a href="https://www.linkedin.com/in/yiliangzhou114">
-      <div class="instructorphoto"><img src="figures/yiliang_zhou.jpeg"></div>
-      <div>Yiliang Zhou<br>Weill Cornell Medicine<br></div>
-    </a>
-  </div>
-
   <div class="instructor">
     <a href="https://cse.hkust.edu.hk/admin/people/faculty/profile/jhc">
       <div class="instructorphoto"><img src="figures/hao_chen.jpg"></div>
       <div>Hao Chen<br>HKUST<br></div>
     </a>
   </div>
-
   <div class="instructor">
-    <a href="https://www.ece.utexas.edu/people/faculty/atlas-wang#:~:text=Professor%20Zhangyang%20%E2%80%9CAtlas%E2%80%9D%20Wang%20is,University%20of%20Texas%20at%20Austin.">
-      <div class="instructorphoto"><img src="figures/atlas_wang.jpg"></div>
-      <div>Atlas Wang<br>UT Austin<br></div>
+    <a href="https://vivo.weill.cornell.edu/display/cwid-ges9006">
+      <div class="instructorphoto"><img src="figures/george_shih.jpg"></div>
+      <div>George Shih<br>Weill Cornell Medicine<br></div>
     </a>
   </div>
-
-    <div class="instructor">
+  <div class="instructor">
+    <a href="https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/radiology/faculty-staff/faculty/flanders.html">
+      <div class="instructorphoto"><img src="figures/adam_flanders.jpg"></div>
+      <div>Adam E. Flanders<br>Thomas Jefferson University<br></div>
+    </a>
+  </div>
+  <div class="instructor">
     <a href="https://penglab.weill.cornell.edu/">
       <div class="instructorphoto"><img src="figures/yifan_peng.jpg"></div>
       <div>Yifan Peng<br>Weill Cornell Medicine<br></div>
     </a>
   </div>
+
 </div>
 
 <br>
@@ -260,7 +233,7 @@
 <br>
 
 <div class="containersmall">
-    <p>Please contact <a href="mailto:cxrltchallenge2024@gmail.com">cxrltchallenge2024@gmail.com</a> if you have any questions. This webpage template is by courtesy of <a href="https://gkioxari.github.io/">Georgia</a>.</p>
+    <p>Please contact <a href="mailto:cxrltchallenge2026@gmail.com">cxrltchallenge2026@gmail.com</a> if you have any questions. This webpage template is by courtesy of <a href="https://gkioxari.github.io/">Georgia</a>.</p>
     <!-- <p>This comeptition is sponsored in part by the Artifical Intelligence Journal (AIJ).</p> -->
     <!-- <center><img src="https://aij.ijcai.org/wp-content/uploads/2021/07/ARTINT_Logo2_c_web_more.jpg" width="10%"></img></center> -->
 </div>
