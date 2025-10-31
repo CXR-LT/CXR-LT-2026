@@ -44,9 +44,8 @@
   <div class="overview">
     <p>Chest radiography, like many diagnostic medical exams, produces a <strong>long-tailed</strong> distribution of clinical findings; while a small subset of diseases is routinely observed, the vast majority of diseases are relatively rare [1]. This poses a challenge for standard deep learning methods, which exhibit bias toward the most common classes at the expense of the important but rare "tail" classes [2]. Many existing methods [3] have been proposed to tackle this specific type of imbalance, though only recently has attention been given to long-tailed medical image recognition problems [4-6]. Diagnosis on chest X-rays (CXRs) is also a <strong>multi-label</strong> problem, as patients often present with multiple disease findings simultaneously; however, only a select few studies incorporate knowledge of label co-occurrence into the learning process [7-9, 12]. Since most large-scale image classification benchmarks contain single-label images with a mostly balanced distribution of labels, many standard deep learning methods fail to accommodate the class imbalance and co-occurrence problems posed by the long-tailed, multi-label nature of tasks like disease diagnosis on CXRs [2].</p>
 
-    <p>In the first iteration of CXR-LT held in 2023, we expanded upon the <a href="https://physionet.org/content/mimic-cxr-jpg/2.0.0/">MIMIC-CXR-JPG</a> [10,11] dataset by enlarging the set of target classes from 14 to 26, generating labels for 12 new rare disease findings by parsing radiology reports [13]. While this made for a challenging long-tailed, multi-label disease classification task that attracted 59 teams who contributed over 500 unique submissions, Radiology Gamuts Ontology documents over 4,500 unique radiological image findings. That is, the "true" distribution of all clinical findings on CXR is at least two orders of magnitude longer than what our -- or any existing dataset can offer. For this reason, we argue that the only way to truly tackle the long-tail of radiological image findings is to develop a model that can readily generalize to new classes in <strong>"zero-shot"</strong> fashion [14].</span></span></p>
-
-    <p><span><span>For this year's version of CXR-LT, we extract labels for an additional 19 rare disease findings (for a total of 377,110 CXR images, each with 45 disease labels) and introduce two new challenge tracks, featuring a zero-shot classification task.</p>  </div>
+    <p>The first event, CXR-LT 2023[13], aimed to achieve these goals by providing high-quality benchmark CXR data for model development and conducting comprehensive evaluations to identify ongoing issues impacting lung disease classification performance. Building on the success of CXR-LT 2023, the CXR-LT 2024 [14] expands the dataset to 377,110 chest X-rays (CXRs) and 45 disease labels, including 19 new rare disease findings. It also introduces a new focus on zero-shot learning to address limitations identified in the previous event. </span></span></p>
+    <p><span><span>For this year's version of CXR-LT 2026, we continue and extend the CXR-LT benchmark with two restructured tasks focused on long-tailed multi-label classification of chest X-rays. These tasks are directly motivated by real-world diagnostic scenarios, where disease distributions are highly imbalanced, and ground truth labels may vary in quality and coverage.</p>  </div>
 </div>
 
 <br>
@@ -142,7 +141,18 @@
 <div class="containersmall">
   <h2>Steering committee</h2>
 
-
+  <div class="instructor">
+    <a href="https://vivo.weill.cornell.edu/display/cwid-ges9006">
+      <div class="instructorphoto"><img src="figures/george_shih.jpg"></div>
+      <div>George Shih<br>Weill Cornell Medicine<br></div>
+    </a>
+  </div>
+  <div class="instructor">
+    <a href="https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/radiology/faculty-staff/faculty/flanders.html">
+      <div class="instructorphoto"><img src="figures/adam_flanders.jpg"></div>
+      <div>Adam E. Flanders<br>Thomas Jefferson Univ.<br></div>
+    </a>
+  </div>
   <div class="instructor">
     <a href="https://www.ncbi.nlm.nih.gov/research/bionlp/Zhiyong-Lu">
       <div class="instructorphoto"><img src="figures/zhiyong_lu.png"></div>
@@ -175,6 +185,12 @@
     </a>
   </div>
   <div class="instructor">
+    <a href="https://gholste.me/">
+      <div class="instructorphoto"><img src="figures/greg_holste.jpg"></div>
+      <div>Greg Holste<br>UT Austin<br></div>
+    </a>
+  </div>
+  <div class="instructor">
     <a href="https://med.umn.edu/bio/mingquan-lin">
       <div class="instructorphoto"><img src="figures/MINGQUAN_LIN.jpg"></div>
       <div>Mingquan Lin<br>University of Minnesota<br></div>
@@ -184,18 +200,6 @@
     <a href="https://cse.hkust.edu.hk/admin/people/faculty/profile/jhc">
       <div class="instructorphoto"><img src="figures/hao_chen.jpg"></div>
       <div>Hao Chen<br>HKUST<br></div>
-    </a>
-  </div>
-  <div class="instructor">
-    <a href="https://vivo.weill.cornell.edu/display/cwid-ges9006">
-      <div class="instructorphoto"><img src="figures/george_shih.jpg"></div>
-      <div>George Shih<br>Weill Cornell Medicine<br></div>
-    </a>
-  </div>
-  <div class="instructor">
-    <a href="https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/radiology/faculty-staff/faculty/flanders.html">
-      <div class="instructorphoto"><img src="figures/adam_flanders.jpg"></div>
-      <div>Adam E. Flanders<br>Thomas Jefferson Univ.<br></div>
     </a>
   </div>
   <div class="instructor">
@@ -226,7 +230,7 @@
         <li> PhysioNet. MIMIC-CXR-JPG - chest radiographs with structured labels [Internet]. Available from: https://physionet.org/content/mimic-cxr-jpg/2.0.0/.</li>
         <li>Moukheiber D, Mahindre S, Moukheiber L, Moukheiber M, Wang S, Ma C, Shih G, Peng Y, Gao M. Few-Shot Learning Geometric Ensemble for Multi-label Classification of Chest X-Rays. In Data Augmentation, Labelling, and Imperfections: Second MICCAI Workshop, DALI 2022, Held in Conjunction with MICCAI 2022, Singapore, September 22, 2022, Proceedings 2022 Sep 16 (pp. 112-122). Cham: Springer Nature Switzerland.</li>
         <li> CodaLab. CXR-LT: Multi-Label Long-Tailed Classification on Chest X-Rays [Internet]. Available from: https://codalab.lisn.upsaclay.fr/competitions/12599.</li>
-        <li> Holste G, Zhou Y, Wang S, Jaiswal A, Lin M, Zhuge S, Yang Y, Kim D, Nguyen-Mau TH, Tran MT, Jeong J. Towards long-tailed, multi-label disease classification from chest X-ray: Overview of the CXR-LT challenge. arXiv preprint arXiv:2310.16112. 2023 Oct 24.</li>
+        <li> Lin M, Holste G, Wang S, Zhou Y, Wei Y, Banerjee I, Chen P, Dai T, Du Y, Dvornek NC, Ge Y, Guo Z, Hanaoka S, Kim D, Messina P, Lu Y, Parra D, Son D, Soto Á, Urooj A, Vidal R, Yamagishi Y, Yan P, Yang Z, Zhang R, Zhou Y, Celi LA, Summers RM, Lu Z, Chen H, Flanders A, Shih G, Wang Z, Peng Y. CXR-LT 2024: A MICCAI challenge on long-tailed, multi-label, and zero-shot disease classification from chest X-ray. Med Image Anal. 2025 Dec;106:103739. </li>
       </ol>    </div>
 </div>
 
