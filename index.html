@@ -54,23 +54,47 @@
   <h2>Shared Task</h2>
     <div class="overview">
       <h3>Dataset</h3>
-      <p>CXR-LT 2026 is the third edition of a successful challenge first hosted at ICCV 2023 and second hosted at MICCAI 2024. The task remains the same: to classify multiple disease labels from chest X-rays in the presence of a long-tailed label distribution.
+      <p>This challenge is based on a curated set of over 160,000 chest X-ray images selected from the <a href="https://bimcv.cipf.es/bimcv-projects/padchest/">PadChest</a>[15], supplemented with <a href="https://arxiv.org/abs/2411.05085"></a>PadChest-GR</a>[16], where radiologists provided manual annotations. We curated a final set of 36 long-tailed classes, which span a broad range of chest findings and serve as the prediction targets for this year’s classification task.
       </p>
 
       <h3>Task</h3>
-      <p>Given a CXR, our challenge includes three tasks, to be held as independent tasks: 
+      <p>Given a CXR, our challenge includes two tasks, to be held as independent tasks: 
         <ul>
-          <li>Task 1: long-tailed classification on an annotated test set;</li>
-          <li>Task 2: zero-shot generalization to previously unseen disease findings. </li>
+          <li>Task 1: Given a chest X-ray, the goal is to detect <b>all clinical findings present in the image</b>.
+            This is a <b>multi-label classification task</b>, meaning that a single image may contain <b>multiple findings</b>. You can train your models on the <b>30 classes</b> listed in Train_CLASS.txt, and they will be evaluated on the <b>same set</b>. You may use external data sources for training, provided you do not use any data reserved for testing.
+          </li>
+          <li>Task 2: Given a chest X-ray, the goal is to detect <b>Out-of-distribution(OOD) clinical findings</b> that are not present in the training set. This is also a <b>multi-label classification task</b>, and a single image may contain <b>multiple findings</b>. For Task 2, you can still train your models on the same 30 classes listed in Train_CLASS.txt, but the test set includes images containing <b>six additional findings that do not appear in the training data</b>(listed in Eval_Class_Task2.txt). Therefore, your model must produce predictions for these unseen OOD classes, even though they are not part of the training labels. </li>
         </ul>
       For all tasks, participants will be provided with a large, automatically labeled training set of >250,000 CXR images with 40 binary disease labels. While last year's CXR-LT was a success, we hope that CXR-LT 2024 can provide even further meaningful methodological advances toward clinically realistic multi-label, long-tailed, and zero-shot disease classification on CXR.
       </p>
-
-      <h3>Evaluation</h3>
-      <p>For each task, models will be evaluated on the provided testing set using “macro-averaged” mean Average Precision (<strong>mAP</strong>). 
+      <h3>Access to Images</h3>
+      <p>This competition uses all images from PADCHEST. By successfully registering for this competition, you have demonstrated that you have proper access to this dataset. Now you may follow the instructions at <a href="https://bimcv.cipf.es/bimcv-projects/padchest/">https://bimcv.cipf.es/bimcv-projects/padchest/</a> to download the dataset.
+      </p>
+      <h3>Access to Labels</h3>
+      <p>
+        Unlike the original set of PADCHEST labels, this competition includes labels for 36 disease findings. You can access and download the labelset using this link : <a href="https://github.com/CXR-LT/CXR-LT-2026">https://github.com/CXR-LT/CXR-LT-2026</a>. When uncompressed, it contains:
         <ul>
-          <li>Task 1 will be evaluated on a "gold standard" subset of the test set, containing 409 CXRs from 26 of the 40 labels that were manually annotated;</li>
-          <li>Task 2 will be evaluated on a separate set of 5 disease labels (75,000 images from MIMIC-CXR) that are completely held out from training. We labeled 5 new clinical findings using an NLP-based text mining system (MedText).
+          <li><b>CXRLT_2026_training.csv</b>: This file contains the training images, metadata, and labels <b>for both Task1 and Task2</b>. Reminder: You may use external data for this competition, but you may only train your models on the 30 labels listed above.. You may not share these labels under any circumstances, and you are required to delete them once this competition concludes (04/10/2026).	
+          </li>
+          <li><b>CXRLT_2026_TEST_ALL_TASK1.csv</b>: This file contains the development set images and metadata for Task 1. You should use your trained models to generate predictions on the provided development set images and upload your submission according to the instructions below.This file will be available before the development phase begins (11/24/2025).
+          </li>
+          <li><b>CXRLT_2026_TEST_ALL_TASK2.csv</b>:  This file contains the development set images and metadata for Task 2. You should use your trained models to generate predictions on the provided development set images and upload your submission.This file will be available before the development phase begins (11/24/2025).
+          </li>
+          <li><b>development_sample_submission.zip</b>: This file provides an example submission containing randomly generated predictions in the required format.This file will be available before the development phase begins (11/24/2025).
+          </li>
+          <li><b>Train_CLASS.txt</b>: A newline-delimited text file with training set classes
+          </li>
+          <li><b>Eval_Class_Task2.txt</b>: newline-delimited text file with classes used for evaluation on Task 2.
+          </li>
+          <li><b>Removal.csv</b>: This file lists images that <b>cannot be used during the training phase</b>. These images may be reserved for <b>testing or development</b>, and therefore must be excluded from all training procedures.</li>
+        </ul>
+      </p>
+      <h3>Evaluation</h3>
+      <p>For each task, models will be evaluated on the provided testing set using “macro-averaged” mean Average Precision (<strong>mAP</strong>).There will be two phases of the competition: 
+        <ul>
+          <li>Phase 1: Development Phase (starts 11/24/2025; ends 01/13/2026). We will provide you with labeled training data and unlabeled validation data for model development. Train your models on the training data and upload predictions on this development set. Model performance on the development set data will be displayed on the public leaderboard for your feedback.
+          </li>
+          <li>Phase 2: Test Phase (starts 01/13/2026; ends 01/27/2026). We will provide you with unlabeled testing data for final evaluation. Using your models trained on the provided training data, upload predictions on this newly released test set. The test set <b>includes images held out from PadChest, along with images from additional sources</b>, to evaluate the generalizability of the models. <b>Final competition results</b> will only be based on model performance <b>during the Test Phase on the provided test set</b>. For this phase, the leaderboard will be kept hidden until the CXR-LT event at ISBI 2026, and you will be given up to five successful submissions. To participate in the testing phase, teams <b>must have made at least one valid submission during the development phase</b>. Only teams that meet this requirement will be eligible to enter the testing phase. 
           </li>
         </ul>
         </p>
@@ -78,6 +102,9 @@
 
       <h3>Online Evaluation</h3>
       <p>The competition will be conducted through the <a href="https://codalab.lisn.upsaclay.fr/">CodaLab</a> platform.
+      </p>
+      <h3>Awards</h3>
+      <p>This challenge is hosted in conjunction with the <a href="https://biomedicalimaging.org/2026/challenges/">ISBI 2026 challenge</a>. For each task, the <b>top three teams</b> will be invited to submit their work to the ISBI 2026 challenge track proceedings, receive an official certificate, and present their methods in an oral session at the ISBI 2026 CXR-LT Challenge in London. After the conference, we will prepare a summary paper to be submitted to a top medical imaging journal (e.g., MedIA, TMI). A selected group of <b>top-performing teams from each task </b>(final number to be announced) will be invited to contribute and describe their methods in this journal publication, similar to our previous challenge report [12].
       </p>
     </div>
 </div>
@@ -87,18 +114,63 @@
 <div class="container">
   <h2>To Participate</h2>
     <div class="overview">
-      <p>This competition uses data from <a href="https://physionet.org/content/mimic-cxr-jpg/2.0.0/">MIMIC-CXR-JPG v2.0.0</a> [10-11], which requires credentialing through <a href="https://physionet.org/">PhysioNet</a> and a signed Data Use Agreement (DUA) for MIMIC-CXR-JPG. </p>
+      <p>This competition uses data from <a href="https://bimcv.cipf.es/bimcv-projects/padchest/">PADCHEST</a> [15]. </p>
       
       <p>To participate in this competition, you must follow these steps:</p>
 
       <ul>
-        <li>Step 1: Become a credentialed user through <a href="https://physionet.org/">PhysioNet</a> and sign the DUA for MIMIC-CXR-JPG v2.0.0 access. (If you are already credentialed with MIMIC-CXR-JPG access, you can skip this step.)</li>
-        <li>Step 2: Fill out this <a href="">Google Form</a> providing (i) your <strong>CodaLab email address</strong>, (ii) <strong>proof that you are a credentialed PhysioNet user</strong>, and (iii) <strong>proof that you signed the DUA for MIMIC-CXR-JPG v2.0.0</strong>. <span style='color:Red'>IMPORTANT: Please ensure your PhysioNet email is the same as your CodaLab email to get approved.</span></li>
-        <li>Step 3: Register for the competition on CodaLab via the "Participate" tab and await our review. </li>
+        <li>Step 1: Access and download all the images and metadata on PadChest.
+        </li>
+        <li>Step 2: Fill out this <a href="https://forms.gle/ZDM3ZFqFEkf4jvTA6">Google Form</a> providing (i) your <strong>CodaLab email address</strong>, (ii).confirmation that you agree to follow all competition rules. <span style='color:Red'>Participants who violate the rules may have their results disqualified by the organizers.</span></li>
+        <li>Step 3: Register for the competition on CodaLab via the "Participate" tab and await our review. If you have completed these steps correctly, you will be admitted to the competition, and we will email you links to download the necessary data. You are not permitted to share these labels under any circumstances.
+        </li>
       </ul>
-
+      <h3>Rules</h3>
       <p>If you have completed these steps correctly, you will be admitted to the competition and we will provide links to download the necessary data by email! You are not permitted to share these labels whatsoever.</p>
-    
+      <ul>
+        <li>
+          You cannot train on images from this competition's development and test sets. If we find any evidence that you have trained on images listed in <code>Removal.csv</code>, you will be disqualified and barred from participating in the ISBI 2026 CXR-LT challenge.
+        </li>
+        <li>
+          You are permitted to train on external data and use pretrained models, so long as they were not trained on images from this competition's development and test sets. For example, you can use models pretrained on ImageNet, but you should avoid using models pretrained on PADChest since those models were likely trained on images from this competition's development and/or test sets, which is not permitted.
+        </li>
+        <li>
+          For Task 2 only, you are not allowed to use any images containing the six OOD labels for supervised training, nor may you use any pretrained models obtained using these images or similar label supervision. These OOD-related labels must remain unseen during training to preserve the OOD setting and ensure a fair evaluation.
+        </li>
+        <li>
+          All submissions must contain (i) a predictions <code>.csv</code> file and (ii) a <code>code/</code> directory with all code used for model development and inference.
+        </li>
+        <li>
+          Please see detailed submission instructions under <strong>"Learn the Details" → "Submission Format"</strong>. You can find a properly formatted sample submission for the development set under <strong>"Participate" → "Files"</strong> once registered for the competition.
+        </li>
+        <li>
+          Your <code>.csv</code> must contain the <code>dicom_id</code> column denoting each unique image in the given evaluation set and must contain a column for each of the 30/6 evaluation classes. All values in these 30/6 class-specific columns must be values in the range [0, 1] representing the probability that the given image (row) contains the given finding (column).
+        </li>
+        <li>
+          All of your training and inference code must be placed in a <code>code/</code> directory. You will only be allowed to submit to and participate in the ISBI 2026 CXR-LT challenge if your code is transparent and reproducible.
+        </li>
+        <li>
+          Your <code>code/</code> directory and the prediction <code>.csv</code> file should be compressed together into a single <code>.zip</code> file, which you will upload for submission.
+        </li>
+        <li>
+          You may, under no circumstances, share any of the provided labeled training data in accordance with the PadChest.
+        </li>
+        <li>
+          If you wish to participate in a team, you must use a single shared CodaLab account.
+        </li>
+        <li>
+          After completion of the challenge (04/10/2026), you must delete all provided labels from your computer(s).
+        </li>
+        <li>
+          You may not manually or automatically extract labels from text reports associated with any PadChest (or PadChest_GR) cases to get the label directly.
+        </li>
+        <li>
+          After the testing phase, the top three performing teams for each task will be required to share their code and provide a runnable Docker image to verify that their results can be reproduced.
+        </li>
+        <li>
+          To participate in the testing phase, teams must have made at least one valid submission during the development phase. Only teams that meet this requirement will be eligible to enter the testing phase.
+        </li>
+      </ul>
     </div>
 </div>
 
@@ -107,7 +179,7 @@
 <div class="container">
   <h2>Important dates</h2>
     <div class="schedule">
-      <p class="subtitle"><span class="announce_date">Nov 17, 2025</span>&nbsp;&nbsp;&nbsp;&nbsp;Training data released and challenge (development phase) begins</p>
+      <p class="subtitle"><span class="announce_date">Nov 24, 2025</span>&nbsp;&nbsp;&nbsp;&nbsp;Training data released and challenge (development phase) begins</p>
       <p class="subtitle"><span class="announce_date">Dec 01, 2025</span>&nbsp;&nbsp;&nbsp;&nbsp;Test labels released and final evaluation (testing phase) begins</p>
       <p class="subtitle"><span class="announce_date">Jan 27, 2026</span>&nbsp;&nbsp;&nbsp;&nbsp;Testing phase ends and competition is closed.</p>
       <p class="subtitle"><span class="announce_date">Feb 10, 2026</span>&nbsp;&nbsp;&nbsp;&nbsp;Top-performing teams invited to present at ISBI 2026</p>
@@ -243,6 +315,8 @@
         <li>Moukheiber D, Mahindre S, Moukheiber L, Moukheiber M, Wang S, Ma C, Shih G, Peng Y, Gao M. Few-Shot Learning Geometric Ensemble for Multi-label Classification of Chest X-Rays. In Data Augmentation, Labelling, and Imperfections: Second MICCAI Workshop, DALI 2022, Held in Conjunction with MICCAI 2022, Singapore, September 22, 2022, Proceedings 2022 Sep 16 (pp. 112-122). Cham: Springer Nature Switzerland.</li>
         <li>CodaLab. CXR-LT: Multi-Label Long-Tailed Classification on Chest X-Rays [Internet]. Available from: https://codalab.lisn.upsaclay.fr/competitions/12599.</li>
         <li>Lin M, Holste G, Wang S, Zhou Y, Wei Y, Banerjee I, Chen P, Dai T, Du Y, Dvornek NC, Ge Y, Guo Z, Hanaoka S, Kim D, Messina P, Lu Y, Parra D, Son D, Soto Á, Urooj A, Vidal R, Yamagishi Y, Yan P, Yang Z, Zhang R, Zhou Y, Celi LA, Summers RM, Lu Z, Chen H, Flanders A, Shih G, Wang Z, Peng Y. CXR-LT 2024: A MICCAI challenge on long-tailed, multi-label, and zero-shot disease classification from chest X-ray. Med Image Anal. 2025 Dec;106:103739. </li>
+        <li>Bustos, A., Pertusa, A., Salinas, J. M., & De La Iglesia-Vaya, M. (2020). Padchest: A large chest x-ray image dataset with multi-label annotated reports. Medical image analysis, 66, 101797.</li>
+        <li>de Castro, D. C., Bustos, A., Bannur, S., Hyland, S. L., Bouzid, K., Wetscherek, M. T., ... & Pertusa, A. (2025). Padchest-gr: A bilingual chest X-ray dataset for grounded radiology report generation. NEJM AI, 2(7), AIdbp2401120.</li>
       </ol>    
     </div>
 </div>
