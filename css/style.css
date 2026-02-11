@@ -194,3 +194,10 @@ table.psets {
   text-align: center;
   margin-right: 20px;
 }
+
+.leaderboard-note { margin: 10px 0 18px; color: #666; }
+.leaderboard .table > thead > tr > th { vertical-align: middle; }
+.metric { text-align: right; }
+.rank { width: 60px; text-align: center; }
+.team { font-weight: 600; }
+.affil { color: #444; }

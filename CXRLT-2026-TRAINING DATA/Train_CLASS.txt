@@ -1,0 +1,30 @@
+Normal	
+aortic elongation	
+cardiomegaly	
+pleural effusion	
+Nodule	
+atelectasis	
+pleural thickening	
+aortic atheromatosis	
+Support Devices	
+alveolar pattern	
+fracture	
+Hernia	
+Emphysema	
+azygos lobe	
+Hydropneumothorax	
+Kyphosis	
+Mass	
+Pneumothorax	
+Subcutaneous Emphysema	
+pneumoperitoneo	
+vascular hilar enlargement	
+vertebral degenerative changes	
+hyperinflated lung	
+interstitial pattern	
+central venous catheter	
+hypoexpansion	
+bronchiectasis	
+hemidiaphragm elevation	
+sternotomy	
+calcified densities
