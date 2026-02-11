@@ -201,3 +201,15 @@ table.psets {
 .rank { width: 60px; text-align: center; }
 .team { font-weight: 600; }
 .affil { color: #444; }
+.table {
+	font-size: 16px;
+  }
+  
+.table th {
+	text-align: center;
+	font-weight: 600;
+  }
+  
+.table td {
+	text-align: center;
+  }
